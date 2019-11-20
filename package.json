@@ -1,0 +1,35 @@
+{
+  "name": "react-monorepo-boilerplate",
+  "version": "2.0.0",
+  "description": "Single page application",
+  "author": "Panenco <info@panenco.com>",
+  "license": "UNLICENSED",
+  "private": true,
+  "scripts": {
+    "lerna": "lerna",
+    "build": "lerna run build",
+    "clean": "lerna run clean",
+    "eslint": "lerna run eslint",
+    "start": "yarn server start",
+    "bootstrap": "yarn lerna bootstrap",
+    "ui": "cd packages/ui && yarn",
+    "app": "cd packages/app && yarn",
+    "server": "cd packages/server && yarn"
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
+      "pre-commit": "lerna run --concurrency 1 --stream pre-commit"
+    }
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^8.2.0",
+    "@commitlint/config-conventional": "^8.2.0",
+    "husky": "^3.0.9",
+    "lerna": "^3.18.2",
+    "lint-staged": "^9.4.2"
+  },
+  "workspaces": [
+    "packages/*"
+  ]
+}
